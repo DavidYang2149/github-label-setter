@@ -32,7 +32,9 @@ export default function Home(props) {
           //defaultValue={moment(props.targetDt, "YYYYMMDD")}
           dateFormat={"YYYYMMDD"}
           onChange={(date) =>
-            Router.push("/?targetDt=" + date.format("YYYYMMDD"))
+            date !== null
+              ? Router.push("/?targetDt=" + date.format("YYYYMMDD"))
+              : ""
           }
         />
         <input
