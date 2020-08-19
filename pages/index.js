@@ -16,6 +16,63 @@ export default function Home(props) {
   //  return <Error statusCode={500} title={props.data.faultInfo.message} />;
   //}
 
+  const [list, setList] = React.useState([]);
+  const [record, setRecord] = React.useState(0);
+  const [recordDate, setRecordDate] = React.useState("");
+  React.useEffect(() => {
+    // for front-end test db
+    let result = localStorage.getItem("diabetes-list");
+
+    if (!result) {
+      result = [];
+    } else {
+      try {
+        result = JSON.parse(result);
+      } catch (error) {
+        result = [];
+      }
+    }
+    setList(result);
+  }, []);
+
+  React.useEffect(() => {
+    // for front-end test db
+    localStorage.setItem("diabetes-list", JSON.stringify(list));
+  }, [list]);
+
+  // add 함수가 렌더가 일어날 때 마다 생성
+
+  const addItem = React.useCallback(() => {
+    const item = {
+      id,
+      record,
+      recordDate,
+    };
+    setList([...list, item]);
+    setRecord(0);
+    setRecordDate("");
+  }, [list, record, recordDate]);
+
+  const removeItem = React.useCallback(
+    (id) => {
+      setList(_.reject(list, (item) => item.id === id));
+    },
+    [list]
+  );
+
+  const done = React.useCallback(
+    (id) => {
+      setList(
+        produce(list, (draft) => {
+          const target = list.find((item) => item.id === id);
+          const index = list.indexOf(target);
+          draft[index].isDone = !target.isDone;
+        })
+      );
+    },
+    [list]
+  );
+
   const targetDt = moment().subtract(1, "day").format("YYYYMMDD");
   //props.targetDt = targetDt;
 
@@ -50,6 +107,23 @@ export default function Home(props) {
           추가
         </button>
       </div>
+      {/* 리스트 띄우기 */}
+      <ul className="list-disc">
+        <li></li>
+        <input
+          type="input"
+          className="mr-2"
+          //checked={!!item.isDone}
+          //onChange={() => done(item.id)}
+        />
+        <span>데이터 수치</span>
+        <button
+          className="ml-2 text-xs text-red text-red-500"
+          //onClick={() => removeItem(item.id)}
+        >
+          [삭제]
+        </button>
+      </ul>
     </div>
   );
 }
