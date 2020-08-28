@@ -6,16 +6,70 @@ import axios from "axios";
 import _ from "lodash";
 import produce from "immer";
 import moment from "moment";
-import { DatePicker } from "antd";
+import { DatePicker, Table, Button, Input } from "antd";
 
 export default function Home(props) {
   if (props.error) {
     return <Error statusCode={500} title={props.error.message} />;
   }
+
   //if (props.data.faultInfo) {
   //  return <Error statusCode={500} title={props.data.faultInfo.message} />;
   //}
 
+  // Diabetes Table - Antd 설정
+  const columns = [
+    {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
+      title: "당뇨수치",
+      dataIndex: "artist",
+      key: "artist",
+    },
+    {
+      title: "날짜",
+      dataIndex: "title",
+      key: "title",
+    },
+    {
+      title: "삭제",
+      dataIndex: "id",
+      key: "remove",
+      render: (value) => (
+        <Button
+          size={"small"}
+          type={"danger"}
+          onClick={() => {
+            if (!confirm("정말 삭제하시겠습니까?")) {
+              return false;
+            }
+            axios
+              .delete(process.env.API_HOST + "/api/records/" + value)
+              .then((response) => {
+                load();
+              })
+              .catch((error) => {
+                console.warn(error);
+              });
+          }}
+        >
+          삭제
+        </Button>
+      ),
+    },
+  ];
+
+  // 신규 props 타입
+  const [records, setRecords] = React.useState(props.records);
+  const load = async () => {
+    const records = await axios.get(process.env.API_HOST + "/api/records");
+    setRecords(records.data);
+  };
+
+  // 기존 props value
   const [list, setList] = React.useState([]);
   const [record, setRecord] = React.useState(0);
   const [recordDate, setRecordDate] = React.useState("");
@@ -82,6 +136,60 @@ export default function Home(props) {
         <title>Diabetes Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div style={{ padding: 24 }}>
+        <Table dataSource={records} columns={columns} rowKey={"id"} />
+
+        <Form
+          onFinish={(values) => {
+            axios
+              .post("http://127.0.0.1:3000/api/records", values)
+              .then((response) => {
+                // response.data -> { id: n, artist: '', title: '' }
+                /*
+              // case 1
+              setRecords( [
+                response.data,
+                ...records,
+              ] )
+            */
+                /*
+              // case 2
+              setRecords( response.data )
+           */
+
+                // 데이터만 다시 로드
+                load();
+
+                // 페이지 새로 고침
+                // Router.reload();
+              })
+              .catch((error) => console.warn(error));
+          }}
+        >
+          <Form.Item
+            name={"artist"}
+            label={"아티스트"}
+            rules={[{ required: true }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name={"title"}
+            label={"타이틀"}
+            rules={[{ required: true }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item>
+            <Button type={"primary"} htmlType={"submit"}>
+              전송
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+      {/* // 신규 추가 작업 부분(테스트)
+      
+      */}
       <h1 className="text-4xl font-bold">당뇨 체크</h1>
       <div>
         <DatePicker
