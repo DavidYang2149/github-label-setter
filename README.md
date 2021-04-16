@@ -1,5 +1,7 @@
-## 당뇨 측정기
+## Todo practice
 
-Diabetes-Blog
-
-당뇨를 기록할 수 있는 그래프입니다.
+사용 기술 스택
+- React
+- MobX
+- Typescript
+- sass
