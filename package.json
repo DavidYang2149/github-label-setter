@@ -1,0 +1,27 @@
+{
+  "name": "todo-typescript-mobx-sass",
+  "version": "1.0.0",
+  "description": "사용 기술 스택 - React - MobX - Typescript - sass",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidYang2149/todo-typescript-mobx-sass.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidYang2149/todo-typescript-mobx-sass/issues"
+  },
+  "homepage": "https://github.com/DavidYang2149/todo-typescript-mobx-sass#readme",
+  "dependencies": {
+    "concurrently": "^6.0.2",
+    "nodemon": "^2.0.7"
+  }
+}
