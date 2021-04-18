@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/DavidYang2149/todo-typescript-mobx-sass#readme",
   "dependencies": {
+    "@types/inquirer": "^7.3.1",
     "concurrently": "^6.0.2",
+    "inquirer": "^8.0.0",
     "nodemon": "^2.0.7"
   }
 }
