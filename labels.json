@@ -1,61 +1,61 @@
 [
   {
-    "name": "fire: Bug",
+    "name": ":fire: Bug",
     "color": "#D73A4A",
     "description": "버그 보고 및 처리"
   },
   {
-    "name": "sparkles: Feature",
+    "name": ":sparkles: Feature",
     "color": "#D7078C",
     "description": "기능, UI, 문서 추가 및 개선"
   },
   {
-    "name": "gear: Environment",
+    "name": ":gear: Environment",
     "color": "#E3FEB5",
     "description": "환경설정(product)"
   },
   {
-    "name": "test_tube: Lab",
+    "name": ":test_tube: Lab",
     "color": "#78E1C9",
     "description": "실험실"
   },
   {
-    "name": "memo: Todo",
+    "name": ":memo: Todo",
     "color": "#83024E",
     "description": "해야할 업무"
   },
   {
-    "name": "package: Package",
+    "name": ":package: Package",
     "color": "#5721A0",
     "description": "패키지(dependencies)"
   },
   {
-    "name": "page_facing_up: Documentation",
+    "name": ":page_facing_up: Documentation",
     "color": "#0075CA",
     "description": "문서 추가 및 개선"
   },
   {
-    "name": "monocle_face: Question",
+    "name": ":monocle_face: Question",
     "color": "#67E870",
     "description": "질문사항"
   },
   {
-    "name": "pushpin: Issue",
+    "name": ":pushpin: Issue",
     "color": "#7057FF",
     "description": "이슈(논의)"
   },
   {
-    "name": "factory: Refactoring",
+    "name": ":factory: Refactoring",
     "color": "#CBE7E4",
     "description": "리팩터링"
   },
   {
-    "name": "busts_in_silhouette: Help Wanted",
+    "name": ":busts_in_silhouette: Help Wanted",
     "color": "#008672",
     "description": "도움 요청"
   },
   {
-    "name": "fire_extinguisher: Test",
+    "name": ":fire_extinguisher: Test",
     "color": "#FEF2C0",
     "description": "테스트 작업"
   }
