@@ -58,5 +58,10 @@
     "name": ":fire_extinguisher: Test",
     "color": "#FEF2C0",
     "description": "테스트 작업"
+  },
+  {
+    "name": ":robot: Dependencies",
+    "color": "#D4C5F9",
+    "description": "의존성"
   }
 ]
