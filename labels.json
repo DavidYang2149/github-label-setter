@@ -35,6 +35,11 @@
     "description": "문서 추가 및 개선"
   },
   {
+    "name": ":police_officer: Security",
+    "color": "#BB22BE",
+    "description": "보안성"
+  },
+  {
     "name": ":monocle_face: Question",
     "color": "#67E870",
     "description": "질문사항"
