@@ -68,5 +68,10 @@
     "name": ":robot: Dependencies",
     "color": "#D4C5F9",
     "description": "의존성"
+  },
+  {
+    "name": ":label: Version",
+    "color": "#1FB918",
+    "description": "버전"
   }
 ]
