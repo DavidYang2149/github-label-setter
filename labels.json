@@ -73,5 +73,10 @@
     "name": ":label: Version",
     "color": "#1FB918",
     "description": "버전"
+  },
+  {
+    "name": ":lipstick: Design",
+    "color": "#50E88A",
+    "description": "UI, UX, 디자인"
   }
 ]
